@@ -10,6 +10,7 @@ public class Spiral {
 		System.out.println("Enter length");
 		int length = sc.nextInt();
 		int arr[][] = new int[length][length];
+		System.out.println("Input elements");
 		for (int i = 0; i < length; i++) {
 			for (int j = 0; j < length; j++) {
 				arr[i][j] = sc.nextInt();

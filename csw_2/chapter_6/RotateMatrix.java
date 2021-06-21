@@ -9,13 +9,14 @@ public class RotateMatrix {
 		System.out.println("enter length");
 		int length = sc.nextInt();
 		int arr[][] = new int[length][length];
+		System.out.println("Enter elements");
 		for (int i = 0; i < length; i++) {
 			for (int j = 0; j < length; j++) {
 				arr[i][j] = sc.nextInt();
 			}
 		}
+		System.out.println("Original Matrix");
 		print(arr);
-		System.out.println("------------------------------");
 		rotate(arr);
 		sc.close();
 
@@ -30,6 +31,7 @@ public class RotateMatrix {
 				arr[i][arr.length - 1] = temp;
 			}
 		}
+		System.out.println("Rotated Matrix");
 		print(arr);
 	}
 

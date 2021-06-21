@@ -34,10 +34,7 @@ public class MutiplicationSimulation {
 				multiply(number1, number2.get(i));
 			}
 
-			// check and assign for negative numbers
-			if (!checkSign(num1, num2)) {
-				output.set(output.size() - 1, (-1) * output.get(output.size() - 1));
-			}
+			
 
 			Collections.reverse(output);
 			System.out.println(output);

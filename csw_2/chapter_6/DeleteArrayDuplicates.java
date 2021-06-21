@@ -15,11 +15,7 @@ public class DeleteArrayDuplicates {
 			arr[i] = sc.nextInt();
 		}
 		Arrays.sort(arr);
-		for (int i : arr) {
-			System.out.print(i + " ");
-		}
 		int outArr[] = RemoveDuplicates(arr);
-		System.out.println();
 		System.out.println("output array is:");
 		for (int i = 0; i < outArr.length; i++) {
 			System.out.print(outArr[i] + " ");
@@ -33,8 +29,6 @@ public class DeleteArrayDuplicates {
 
 		int left = 0, right = 1, lastRight = 1;
 		while (left < arr.length && right < arr.length && lastRight < arr.length) {
-			System.out.println("left:" + left + " lastright:" + lastRight + " right:" + right);
-			System.out.println("-----------------------------");
 			if (arr[left] != arr[right]) {
 				arr[lastRight] = arr[right];
 				left = right;

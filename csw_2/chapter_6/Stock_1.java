@@ -14,9 +14,6 @@ public class Stock_1 {
 		for (int i = 0; i < length; i++) {
 			price[i] = sc.nextInt();
 		}
-		for (int i : price) {
-			System.out.print(i + " ");
-		}
 		System.out.println();
 		int[] output = buyAndSell(price);
 		System.out.println(

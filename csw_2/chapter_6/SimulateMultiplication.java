@@ -27,7 +27,6 @@ public class SimulateMultiplication {
 			mutliply(number1, number2.get(i));
 		}
 		Collections.reverse(output);
-		System.out.println(output);
 		sc.close();
 
 	}
@@ -57,9 +56,7 @@ public class SimulateMultiplication {
 
 		while (index < inputList.size()) {
 			product = carry + (int) (Math.abs(inputList.get(index))) * n;
-
 			carry = (product >= 10) ? product % 100 : 0;
-			System.out.println("carry:" + carry);
 			product = product % 10;
 			if (step == 0) {
 				output.add(product);
@@ -71,9 +68,7 @@ public class SimulateMultiplication {
 		if (carry != 0) {
 			temp.add(carry);
 		}
-		System.out.println("templist:" + temp);
 		addLists(temp);
-		System.out.println("step:" + step);
 		step++;
 	}
 
