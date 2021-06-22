@@ -1,11 +1,11 @@
-package extra;
+package chapter_8;
 
 public class LinkedList1Demo {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
-		LinkedList1 li = new LinkedList1();
+		LinkedList1<Integer> li = new LinkedList1<>();
 		li.add(2);
 		li.add(5);
 		li.add(5);
