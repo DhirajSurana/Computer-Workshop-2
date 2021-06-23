@@ -1,6 +1,6 @@
 package linked_List;
 
-public class LinkedList1<T> {
+public class LinkedList2<T> {
 
 	/**
 	 * global variables for the maintenance of the list
@@ -163,51 +163,9 @@ public class LinkedList1<T> {
 	}
 
 	/**
-	 * removes kth element form last
-	 * 
-	 * @throws NullPointerException if head == null
-	 * @param index node succeeding this index will be removed
-	 * @return the value of the removed node
-	 */
-	public T removeKthFromLast(int index) {
-		if (head == null) {
-			throw new NullPointerException();
-		}
-		if (index < 0 || index > length) {
-			throw new IllegalArgumentException();
-		}
-		if (index == length) {
-			T value = head.value;
-			head = head.next;
-			length--;
-			return value;
-		}
-		Node1<T> temp = head;
-		Node1<T> fast = head;
-		Node1<T> slow = head;
-		for (int i = 1; i < index; i++) {
-			fast = fast.next;
-		}
-		while (fast.next != null) {
-			fast = fast.next;
-			temp = slow;
-			slow = slow.next;
-		}
-		if (slow == current) {
-			temp.next = null;
-		} else {
-			temp.next = slow.next;
-		}
-		length--;
-		return slow.value;
-
-	}
-
-	/**
 	 * replaces the value at the specified index with the specified value
 	 * 
 	 * @throws IllegalArgumentException if index < 0 || index > length
-	 * @throws NullPointerException     if head == null
 	 * @param index value of node at this Index will be replaced
 	 * @param value node's value will be replaced with this value
 	 * @return true if replacement was successful
@@ -216,9 +174,6 @@ public class LinkedList1<T> {
 
 		if (index < 0 || index > length) {
 			throw new IllegalArgumentException(" index " + index + " does not exist");
-		}
-		if (head == null) {
-			throw new NullPointerException();
 		}
 
 		Node1<T> temp = head;
@@ -260,44 +215,27 @@ public class LinkedList1<T> {
 		head = temp;
 	}
 
-	/**
-	 * reverses the list form the specified start index to end index
-	 * 
-	 * @throws IlligalArgumentException if start > end || start < 0 || end < 0
-	 * @throws NullPointerException     if head == null
-	 * @param start index of the sublist (inclusive)
-	 * @param end   index of the sublist (inclusive)
-	 * @return true if reverse of the sublist is successful
-	 */
-
 	public boolean reverse(int start, int end) {
-		if (start > end || start < 0 || end < 0) {
-			throw new IllegalArgumentException();
-		}
-		if (head == null) {
-			throw new NullPointerException();
-		}
-
+		/*
+		 * if (start <= 0 || end > length) { throw new IllegalArgumentException(); } if
+		 * (head == null) { throw new NullPointerException(); }
+		 */
 		int count = 1;
+
 		Node1<T> temp = head;
-		Node1<T> dummyHead = temp;
 		while (count < start) {
-			dummyHead = temp;
 			temp = temp.next;
 			count++;
 		}
-		Node1<T> dummyTail = temp;
 		Node1<T> curr = temp.next;
 		Node1<T> next = temp.next.next;
-		while (count < end) {
+		while (count <= end) {
 			curr.next = temp;
 			temp = curr;
 			curr = next;
 			next = next.next;
-			count++;
 		}
-		dummyHead.next = temp;
-		dummyTail.next = curr;
+
 		return true;
 	}
 
