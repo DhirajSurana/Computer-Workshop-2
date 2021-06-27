@@ -12,21 +12,37 @@ public class LoopInLinkedList {
 		for (int i = 0; i < length; i++) {
 			list.add(sc.nextInt());
 		}
-		System.out.println(checkLoop(list));
+		System.out.println(hasCycle(list.head()));
 		sc.close();
 	}
 
-	private static boolean checkLoop(LinkedList1<Integer> list) {
-		Node1<Integer> slow = list.head();
-		Node1<Integer> fast = list.head().next;
-		while (slow.next != null) {
-			if (fast == slow) {
-				return true;
-			} else {
-				slow = slow.next;
-				fast = fast.next.next;
+	public static Node1<Integer> hasCycle(Node1<Integer> head) {
+		Node1<Integer> fast = head, slow = head;
+		while (fast != null && fast.next != null) {
+			slow = slow.next;
+			fast = fast.next.next;
+			if (slow == fast) {
+				int cycleLen = 0;
+				do {
+					++cycleLen;
+					fast = fast.next;
+				} while (slow != fast);
+
+				Node1<Integer> cycleLenAdvancedlter = head;
+
+				while (cycleLen-- > 0) {
+					cycleLenAdvancedlter = cycleLenAdvancedlter.next;
+				}
+				Node1<Integer> iter = head;
+
+				while (iter != cycleLenAdvancedlter) {
+					iter = iter.next;
+					cycleLenAdvancedlter = cycleLenAdvancedlter.next;
+				}
+
+				return iter;
 			}
 		}
-		return false;
+		return null;
 	}
 }

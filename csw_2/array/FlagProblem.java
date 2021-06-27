@@ -6,7 +6,6 @@ import java.util.Scanner;
 public class FlagProblem {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 
 		Scanner sc = new Scanner(System.in);
 		Random r = new Random();
@@ -51,7 +50,6 @@ public class FlagProblem {
 	}
 
 	private static int[] swap(int mid, int anothervalue, int[] inputArray) {
-		// TODO Auto-generated method stub
 		int midvalue = inputArray[mid];
 		inputArray[mid] = inputArray[anothervalue];
 		inputArray[anothervalue] = midvalue;

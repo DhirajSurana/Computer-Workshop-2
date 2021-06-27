@@ -7,17 +7,18 @@ public class LinkedList1<T> {
 	 */
 	private Node1<T> head;
 	private Node1<T> current;
-	static int length = 0;
+	protected int length = 0;
 
-	/**
-	 * adds a node to the list
-	 * 
-	 * @param value the value to be added
-	 * @return true if addition was successful
-	 */
-	public boolean add(T value) {
-		addLast(value);
-		return true;
+	public T get(int index) {
+		if (index > length || index < 0) {
+			throw new IllegalArgumentException();
+		}
+		Node1<T> temp = head;
+		int count = 0;
+		while (count++ < index) {
+			temp = temp.next;
+		}
+		return temp.value;
 	}
 
 	/**
@@ -31,6 +32,17 @@ public class LinkedList1<T> {
 	}
 
 	/**
+	 * adds a node to the list
+	 * 
+	 * @param value the value to be added
+	 * @return true if addition was successful
+	 */
+	public boolean add(T value) {
+		addLast(value);
+		return true;
+	}
+
+	/**
 	 * inserts a new node at the start of the list
 	 * 
 	 * @param value the value to be added
@@ -39,6 +51,7 @@ public class LinkedList1<T> {
 	public boolean addFirst(T value) {
 		Node1<T> newNode = new Node1<T>(value, head);
 		head = newNode;
+		length++;
 		return true;
 	}
 
@@ -101,11 +114,11 @@ public class LinkedList1<T> {
 	 * @throws NullPointerException if head == null;
 	 * @return the removed node's value
 	 */
-	public T removeFirst() {
+	public Object removeFirst() {
 		if (head == null) {
 			throw new NullPointerException();
 		}
-		T removed = head.value;
+		Object removed = head.value;
 		head = head.next;
 		length--;
 		return removed;
@@ -118,7 +131,7 @@ public class LinkedList1<T> {
 	 * @throws NullPointerException if head == null
 	 * @return the removed node's value
 	 */
-	public T removeLast() {
+	public Object removeLast() {
 		if (head == null) {
 			throw new NullPointerException();
 		}
@@ -126,7 +139,7 @@ public class LinkedList1<T> {
 		Node1<T> temp = head;
 		Node1<T> last = head;
 
-		T removed = head.value;
+		Object removed = head.value;
 
 		while (temp.next != null) {
 			last = temp;
@@ -146,17 +159,17 @@ public class LinkedList1<T> {
 	 * @param index node after this index will be removed
 	 * @return removed node's value
 	 */
-	public T remove(int index) {
+	public Object remove(int index) {
 		if (index < 0 || index >= length) {
 			throw new IllegalArgumentException();
 		}
 		Node1<T> temp = head;
 		int count = index;
-		while (count <= index) {
+		while (count < index) {
 			temp = temp.next;
 			count++;
 		}
-		T value = temp.value;
+		Object value = temp.value;
 		temp.next = temp.next.next;
 		length--;
 		return value;
@@ -169,19 +182,21 @@ public class LinkedList1<T> {
 	 * @param index node succeeding this index will be removed
 	 * @return the value of the removed node
 	 */
-	public T removeKthFromLast(int index) {
+	public Object removeKthFromLast(int index) {
 		if (head == null) {
 			throw new NullPointerException();
 		}
 		if (index < 0 || index > length) {
 			throw new IllegalArgumentException();
 		}
+
 		if (index == length) {
-			T value = head.value;
+			Object value = head.value;
 			head = head.next;
 			length--;
 			return value;
 		}
+
 		Node1<T> temp = head;
 		Node1<T> fast = head;
 		Node1<T> slow = head;
@@ -289,7 +304,7 @@ public class LinkedList1<T> {
 		Node1<T> dummyTail = temp;
 		Node1<T> curr = temp.next;
 		Node1<T> next = temp.next.next;
-		while (count < end) {
+		while (count <= end) {
 			curr.next = temp;
 			temp = curr;
 			curr = next;
@@ -307,7 +322,7 @@ public class LinkedList1<T> {
 	 * @param value the value to be searched
 	 * @return true if list contains the specified value
 	 */
-	public boolean contains(T value) {
+	public boolean contains(Object value) {
 		boolean contains = false;
 		Node1<T> temp = head;
 		while (temp != null) {
